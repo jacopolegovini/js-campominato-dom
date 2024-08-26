@@ -58,6 +58,12 @@ function generateRandomDifferentNumber (bombNumber, difficulty) {
 //     return cellsElement
 // }
 
+// Funzione per terminare il gioco
+function gameOver(winOrLose) {
+    let answer = confirm('Hai ' + winOrLose + ' ! Hai fatto ' + score + ' punti. Vuoi riprovare?');
+    if (answer) location.reload();
+}
+
 //Funzione per creare il numero di celle corretto
 function createGame(cell, difficulty) {
     tableElement.innerHTML = '';
@@ -69,8 +75,6 @@ function createGame(cell, difficulty) {
     generateRandomDifferentNumber(bombNumber, difficulty);
 
     for (let i = 0; i < numberCell; i++) {
-
-
         // Dichiara un array cells
         let cells = [i];
     
@@ -112,8 +116,12 @@ function createGame(cell, difficulty) {
                 console.log(score)
                 scoreElement.innerHTML = score;
 
-                // Gioco termina 
-                confirm('Hai perso! Hai fatto ' + score + ' punti.');
+                // Termina il gioco
+                let winOrLose = 'perso'
+                gameOver(winOrLose);
+
+                // answer = confirm('Hai perso! Hai fatto ' + score + ' punti. Vuoi riprovare?');
+                // if (answer) location.reload();
             } else {
                 // Aumenta lo score di 1
                 score++;
@@ -121,18 +129,18 @@ function createGame(cell, difficulty) {
                 console.log(score)
 
                 // Controlla se lo score è al massimo possibile e in caso blocca
-                if (score === 2) {
-                    let answer = confirm('Hai vinto! Vuoi riprovare?');
+                if (score === totalScore) {
+                    let winOrLose = 'vinto'
+                    gameOver(winOrLose);
+                    // answer = confirm('Hai vinto! Hai fatto ' + score + ' punti. Vuoi riprovare?');
 
-                    // TODO C'è una soluzione migliore? Ripassaci su più tardi
-                    if (answer) location.reload();
+                    // // TODO C'è una soluzione migliore? Ripassaci su più tardi
+                    // if (answer) location.reload();
                 }
 
                 // Stampa lo score
                 scoreElement.innerHTML = score;
             }
-
-
         })
     }
 }
