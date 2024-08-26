@@ -26,24 +26,27 @@ function changeValue() {
 }
 
 // Funzione generatrice di numeri casuali diversi
-function generateRandomDifferentNumber (bombNumber) {
-    
-    let randomNumbers = [];
+function generateRandomDifferentNumber (bombNumber, difficulty) {
+    randomNumbers = [];
     for (let i = 1; i <= bombNumber; i++) {
-        const randomNumber = Math.floor((Math.random() * 100) + 1);
+        const randomNumber = Math.floor((Math.random() * difficulty) + 1);
         if (!randomNumbers.includes(randomNumber)) {
             randomNumbers.push(randomNumber);
         } else {
             i--;
         }
     }
+    console.log(randomNumbers);
+    return randomNumbers;
 }
 
-generateRandomDifferentNumber(16)
-
 //Funzione per creare il numero di celle corretto
-function createCell(cell) {
+function createCell(cell, difficulty) {
     tableElement.innerHTML = '';
+
+    // Creiamo dei numeri random
+    generateRandomDifferentNumber(bombNumber, difficulty);
+
     for (let i = 0; i < numberCell; i++) {
 
         // Dichiara un array cells
@@ -79,8 +82,15 @@ function createCell(cell) {
             const numberElement = document.querySelectorAll('p');
     
             //Controlla e stampa il numero
-            const number = numberElement[i].textContent;
+            const number = parseInt(numberElement[i].textContent);
             console.log(number);
+
+            // Verifica se il numero random è uguale al numero della casella cliccata 
+            if (randomNumbers.includes(number)) {
+                console.log ('test ok')
+            } else if (!randomNumbers.includes(number)) {
+                console.log('test non ok')
+            }
         })
     }
 }
@@ -92,6 +102,8 @@ let numberCell;
 let selection = '';
 let score = 0;
 let bombNumber = 16;
+let randomNumbers = [];
+let difficulty = 100;
 
 //----------------------------------------------------------------------------
 
@@ -107,15 +119,15 @@ buttonElement.addEventListener('click', function(event) {
     // Imposta il numero di celle in base alla selezione
     if (selection === 'Easy') {
         numberCell = 100;    
-        createCell('cell');
+        createCell('cell', numberCell);
 
     } else if (selection === 'Medium') {
         numberCell = 81;
-        createCell('cell-medium');
+        createCell('cell-medium', numberCell);
 
     } else if (selection === 'Hard') {
         numberCell = 49;
-        createCell('cell-hard');
+        createCell('cell-hard', numberCell);
 
     } else {
         console.log('Seleziona una difficoltà');
