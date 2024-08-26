@@ -40,8 +40,26 @@ function generateRandomDifferentNumber (bombNumber, difficulty) {
     return randomNumbers;
 }
 
+// ! Da capire perchè non funziona
+// function createCell (cellNumber) {
+//     // Dichiara un array cells
+//     let cells = [cellNumber];
+
+//     // Monta quanto necessario
+//     cells[cellNumber] = document.createElement('div');
+//     cells[cellNumber].classList.add(cell);
+//     tableElement.appendChild(cells[cellNumber]);
+    
+//     // Richiama dal DOM quanto appena creato
+//     const cellsElement = document.querySelectorAll('.' + cell); 
+
+//     // Monta quanto necessario
+//     cellsElement[cellNumber].innerHTML = `<p>${cellNumber + 1}</p>`; 
+//     return cellsElement
+// }
+
 //Funzione per creare il numero di celle corretto
-function createCell(cell, difficulty) {
+function createGame(cell, difficulty) {
     tableElement.innerHTML = '';
 
     // Creiamo dei numeri random
@@ -69,12 +87,6 @@ function createCell(cell, difficulty) {
             // Impedisci di poter cliccare nuovamente sulla stessa casella
             if (cellsElement[i].classList.contains('clicked')) return;
 
-            // Aumenta lo score di 1 e stampa
-            score++;
-            console.log(scoreElement)
-            console.log(score)
-            scoreElement.innerHTML = score;
-
             //Aggiungi la classe clicked
             cellsElement[i].classList.add('clicked');
     
@@ -87,10 +99,24 @@ function createCell(cell, difficulty) {
 
             // Verifica se il numero random è uguale al numero della casella cliccata 
             if (randomNumbers.includes(number)) {
-                console.log ('test ok')
+                // La cella diventa rossa
+                cellsElement[i].classList.add('clicked-wrong');
+                cellsElement[i].classList.remove('clicked');
+
+                // Stampa lo score
+                console.log(scoreElement)
+                console.log(score)
+                scoreElement.innerHTML = score;
             } else if (!randomNumbers.includes(number)) {
                 console.log('test non ok')
+                // Aumenta lo score di 1 e stampa
+                score++;
+                console.log(scoreElement)
+                console.log(score)
+                scoreElement.innerHTML = score;
             }
+
+
         })
     }
 }
@@ -119,15 +145,15 @@ buttonElement.addEventListener('click', function(event) {
     // Imposta il numero di celle in base alla selezione
     if (selection === 'Easy') {
         numberCell = 100;    
-        createCell('cell', numberCell);
+        createGame('cell', numberCell);
 
     } else if (selection === 'Medium') {
         numberCell = 81;
-        createCell('cell-medium', numberCell);
+        createGame('cell-medium', numberCell);
 
     } else if (selection === 'Hard') {
         numberCell = 49;
-        createCell('cell-hard', numberCell);
+        createGame('cell-hard', numberCell);
 
     } else {
         console.log('Seleziona una difficoltà');

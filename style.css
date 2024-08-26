@@ -83,6 +83,10 @@ main {
     background-color: #FF7FAA;
 }
 
+.clicked-wrong {
+    background-color: red;
+}
+
 main p {
     font-weight: bold;
 }
