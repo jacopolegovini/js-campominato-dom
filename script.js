@@ -61,11 +61,15 @@ function generateRandomDifferentNumber (bombNumber, difficulty) {
 //Funzione per creare il numero di celle corretto
 function createGame(cell, difficulty) {
     tableElement.innerHTML = '';
+    
+    //Dichiara le variabili
+    let totalScore = difficulty - bombNumber;
 
     // Creiamo dei numeri random
     generateRandomDifferentNumber(bombNumber, difficulty);
 
     for (let i = 0; i < numberCell; i++) {
+
 
         // Dichiara un array cells
         let cells = [i];
@@ -107,12 +111,24 @@ function createGame(cell, difficulty) {
                 console.log(scoreElement)
                 console.log(score)
                 scoreElement.innerHTML = score;
-            } else if (!randomNumbers.includes(number)) {
-                console.log('test non ok')
-                // Aumenta lo score di 1 e stampa
+
+                // Gioco termina 
+                confirm('Hai perso! Hai fatto ' + score + ' punti.');
+            } else {
+                // Aumenta lo score di 1
                 score++;
                 console.log(scoreElement)
                 console.log(score)
+
+                // Controlla se lo score è al massimo possibile e in caso blocca
+                if (score === 2) {
+                    let answer = confirm('Hai vinto! Vuoi riprovare?');
+
+                    // TODO C'è una soluzione migliore? Ripassaci su più tardi
+                    if (answer) location.reload();
+                }
+
+                // Stampa lo score
                 scoreElement.innerHTML = score;
             }
 
