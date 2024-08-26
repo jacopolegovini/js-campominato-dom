@@ -47,6 +47,7 @@ main {
     display: flex;
     flex-wrap: wrap;
     width: 600px;
+    height: 600px;
 }
 
 .cell {
@@ -91,6 +92,18 @@ main p {
     font-weight: bold;
 }
 
+
+/* * Game Over */
+.post-game-none {
+    display: none;
+}
+
+.game-over {
+    height: 300px;
+    width: 450px;
+    border-radius: 25px;
+    background-color: white;
+}
 
 /* Footer */
 footer {

@@ -41,7 +41,7 @@ function generateRandomDifferentNumber (bombNumber, difficulty) {
 }
 
 // ! Da capire perchè non funziona
-// function createCell (cellNumber) {
+// function createCell (cellNumber, cell) {
 //     // Dichiara un array cells
 //     let cells = [cellNumber];
 
@@ -54,12 +54,15 @@ function generateRandomDifferentNumber (bombNumber, difficulty) {
 //     const cellsElement = document.querySelectorAll('.' + cell); 
 
 //     // Monta quanto necessario
-//     cellsElement[cellNumber].innerHTML = `<p>${cellNumber + 1}</p>`; 
-//     return cellsElement
+//     return cellsElement[cellNumber].innerHTML = `<p>${cellNumber + 1}</p>`; 
+     
 // }
 
 // Funzione per terminare il gioco
 function gameOver(winOrLose) {
+    tableElement.innerHTML = '';
+    tableElement.classList.add('game-over')
+
     let answer = confirm('Hai ' + winOrLose + ' ! Hai fatto ' + score + ' punti. Vuoi riprovare?');
     if (answer) location.reload();
 }
@@ -118,7 +121,7 @@ function createGame(cell, difficulty) {
 
                 // Termina il gioco
                 let winOrLose = 'perso'
-                gameOver(winOrLose);
+                gameOver(winOrLose, cellsElement[i]);
 
                 // answer = confirm('Hai perso! Hai fatto ' + score + ' punti. Vuoi riprovare?');
                 // if (answer) location.reload();
