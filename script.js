@@ -25,6 +25,22 @@ function changeValue() {
     console.log(selection);
 }
 
+// Funzione generatrice di numeri casuali diversi
+function generateRandomDifferentNumber (bombNumber) {
+    
+    let randomNumbers = [];
+    for (let i = 1; i <= bombNumber; i++) {
+        const randomNumber = Math.floor((Math.random() * 100) + 1);
+        if (!randomNumbers.includes(randomNumber)) {
+            randomNumbers.push(randomNumber);
+        } else {
+            i--;
+        }
+    }
+}
+
+generateRandomDifferentNumber(16)
+
 //Funzione per creare il numero di celle corretto
 function createCell(cell) {
     tableElement.innerHTML = '';
@@ -75,6 +91,7 @@ function createCell(cell) {
 let numberCell;
 let selection = '';
 let score = 0;
+let bombNumber = 16;
 
 //----------------------------------------------------------------------------
 
