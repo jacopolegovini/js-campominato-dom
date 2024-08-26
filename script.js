@@ -14,6 +14,7 @@ let tableElement = document.querySelector('.table');
 const buttonElement = document.querySelector('button');
 const selectElement = document.querySelector('select');
 const optionElement = document.querySelectorAll('option');
+const scoreElement = document.getElementById('score');
 
 //----------------------------------------------------------------------------
 
@@ -46,10 +47,19 @@ function createCell(cell) {
         // Crea un nuovo event listener  
         cellsElement[i].addEventListener('click', function() {
     
+            // Impedisci di poter cliccare nuovamente sulla stessa casella
+            if (cellsElement[i].classList.contains('clicked')) return;
+
+            // Aumenta lo score di 1 e stampa
+            score++;
+            console.log(scoreElement)
+            console.log(score)
+            scoreElement.innerHTML = score;
+
             //Aggiungi la classe clicked
             cellsElement[i].classList.add('clicked');
     
-            // Richiama dal DOM quanto appena creato
+            // Richiama dal DOM il number
             const numberElement = document.querySelectorAll('p');
     
             //Controlla e stampa il numero
@@ -64,6 +74,7 @@ function createCell(cell) {
 // Crea le variabili necessarie
 let numberCell;
 let selection = '';
+let score = 0;
 
 //----------------------------------------------------------------------------
 

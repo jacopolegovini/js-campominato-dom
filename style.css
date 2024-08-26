@@ -31,6 +31,11 @@ header {
     font-weight: 700;
 }
 
+.score {
+    padding: 10px;
+    border: 2px solid black;
+}
+
 
 /* Main */
 main {
