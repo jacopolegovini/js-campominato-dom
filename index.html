@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campo Minato</title>
+
+    <!-- JS -->
+    <script defer src="script.js"></script>
+    
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="img/logo.png" alt="logo Boolean">
+            <span>Campo Minato</h1>
+        </div>
+        <div class="commands">
+            <form>
+                <label for="Difficulty">Difficoltà: </label>
+                <select name="difficulty" id="difficulty" onchange="changeValue()"> 
+                    <option value="Easy">Easy</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Hard">Hard</option>
+                </select>
+                <button>Play</button>
+            </form>
+        </div>
+    </header>
+    <main>
+        <div class="table container"></div>
+    </main>
+    <footer>
+        <section>Made with <i class="fa-solid fa-heart"></i> by Boolean</section>
+    </footer>
+</body>
+</html>

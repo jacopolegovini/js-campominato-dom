@@ -1,0 +1,90 @@
+/* General */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1040px;
+}
+
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    padding: 0 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo span {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+
+/* Main */
+main {
+    background-color: #7FFFD4;
+    padding: 30px;
+}
+
+.table {
+    display: flex;
+    flex-wrap: wrap;
+    width: 600px;
+}
+
+.cell {
+    flex-basis: 60px;
+    height: 60px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.cell-medium {
+    flex-basis: calc(600px / 9);
+    height: calc(600px / 9);
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.cell-hard {
+    flex-basis: calc(600px / 7);
+    height: calc(600px / 7);
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.clicked {
+    background-color: #FF7FAA;
+}
+
+main p {
+    font-weight: bold;
+}
+
+
+/* Footer */
+footer {
+    height: 100px;
+    padding: 20px 20px;
+}
